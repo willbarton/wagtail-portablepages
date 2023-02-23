@@ -1,0 +1,103 @@
+[project]
+name = "wagtail-portablepages"
+version = "1.0.0"
+description = "Move pages between Wagtail instances"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "CC0"}
+authors = [
+    {name = "Will Barton", email = "will@willbarton.com" }
+]
+dependencies = [
+    "wagtail>=3",
+]
+classifiers = [
+    "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4",
+    "Framework :: Wagtail",
+    "Framework :: Wagtail :: 4",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+
+[project.optional-dependencies]
+testing = [
+    "coverage[toml]",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/willbarton/wagtail-portablepages"
+"Bug Reports" = "https://github.com/willbarton/wagtail-portablepages/issues"
+"Source" = "https://github.com/willbarton/wagtail-portablepages"
+
+[build-system]
+requires = ["setuptools>=43.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+portablepages = [
+    "templates/portablepages/*",
+    "templates/portablepages/includes/*",
+    "static/portablepages/css/*",
+]
+
+[tool.black]
+line-length = 79
+target-version = ["py38"]
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.tox
+    | \*.egg-info
+    | _build
+    | build
+    | dist
+    | migrations
+  )/
+)
+'''
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".tox",
+    "__pycache__",
+    "*/migrations/*.py",
+    "*/tests/portablepagestest/migrations/*",
+]
+ignore = []
+select = [
+    "E",
+    "F",
+    "W",
+    "I",
+]
+
+[tool.coverage.run]
+omit = [
+    "portablepages/tests/*",
+]
+
+[tool.mypy]
+allow_redefinition = false
+check_untyped_defs = true
+disallow_untyped_decorators = true
+disallow_any_explicit = true
+disallow_any_generics = true
+disallow_untyped_calls = true
+ignore_errors = false
+ignore_missing_imports = true
+implicit_reexport = false
+local_partial_types = true
+strict_optional = true
+strict_equality = true
+no_implicit_optional = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unreachable = true
+warn_no_return = true
